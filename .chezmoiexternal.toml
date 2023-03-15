@@ -1,0 +1,6 @@
+[".zsh/antigen"]
+    type = "archive"
+    url = "https://github.com/zsh-users/antigen/archive/refs/heads/develop.zip"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
