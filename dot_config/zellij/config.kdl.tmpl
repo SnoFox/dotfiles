@@ -253,6 +253,9 @@ plugins {
 // copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
+{{ if contains "WSL" .chezmoi.kernel.osrelease -}}
+copy_command "clip.exe"                   // WSL
+{{ end -}}
 
 // Choose the destination for copied text
 // Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.

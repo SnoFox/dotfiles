@@ -1,1 +1,6 @@
+{{- if eq "darwin" .chezmoi.os -}}
 # macOS Powerline overrides
+{{- else if contains "WSL" .chezmoi.kernel.osrelease -}}
+# WSL Powerline overrides
+typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
+{{ end }}
