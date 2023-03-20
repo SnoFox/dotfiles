@@ -2,3 +2,8 @@ README.md
 LICENSE
 .zsh/zcompdump-*
 .zsh/.history
+
+{{ if ne .chezmoi.os "darwin" }}
+# Add all macOS-only files here
+.snodots/02_brew_path_prefix
+{{ end }}
