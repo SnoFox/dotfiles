@@ -1,7 +1,28 @@
 {{- $snodots := ternary (get . "snodots") dict (hasKey . "snodots" ) -}}
-{{- $isWorkstation := promptBoolOnce $snodots "isWorkstation" "Is this a workstation?" false -}}
-{{- $isOkta := promptBoolOnce $snodots "isOkta" "Is this an Okta device?" false -}}
+{{- $isOkta := false -}}
+{{- $opVault := "" -}}
+{{- $edKey := "" -}}
+{{- $rsaKey := "" -}}
+
+{{- $isWorkstation := promptBoolOnce $snodots "isWorkstation" "Is this a workstation" true -}}
+{{- $isMine := promptBoolOnce $snodots "isPersonal" "Is this a personal device" true -}}
+{{- if not $isMine -}}
+  {{- $isOkta := promptBoolOnce $snodots "isOkta" "Is this an Okta device" false -}}
+{{- end -}}
+
+{{- if $isMine -}}
+  {{- $opVault = "Personal" -}}
+  {{- $edKey = "al6g7er6txmaagdchdpcuuj3xa" -}}
+{{- else -}}
+  {{- $opVault = "Okta" -}}
+  {{- $edKey = "3hnydtulzfhednjgbqhfxcfnlm" -}}
+  {{- $rsaKey = "phb2bs6xs5znqugxr75fjrvke4" -}}
+{{- end -}}
 
 [data]
+  snodots.isPersonal = {{ $isMine }}
   snodots.isOkta = {{ $isOkta }}
   snodots.isWorkstation = {{ $isWorkstation }}
+  snodots.onepassVault = {{ $opVault | quote }}
+  snodots.edKeyId = {{ $edKey | quote }}
+  snodots.rsaKeyId = {{ $rsaKey | quote }}
