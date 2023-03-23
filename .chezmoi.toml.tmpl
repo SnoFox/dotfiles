@@ -1,4 +1,4 @@
-{{- $snodots := get . "snodots" -}}
+{{- $snodots := ternary (get . "snodots") dict (hasKey . "snodots" ) -}}
 {{- $isOkta := promptBoolOnce $snodots "isOkta" "Is this an Okta workstation?" false -}}
 
 [data]
