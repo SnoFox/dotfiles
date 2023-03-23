@@ -3,20 +3,23 @@
 {{- $opVault := "" -}}
 {{- $edKey := "" -}}
 {{- $rsaKey := "" -}}
+{{- $githubId := "" -}}
 
 {{- $isWorkstation := promptBoolOnce $snodots "isWorkstation" "Is this a workstation" true -}}
 {{- $isMine := promptBoolOnce $snodots "isPersonal" "Is this a personal device" true -}}
 {{- if not $isMine -}}
-  {{- $isOkta := promptBoolOnce $snodots "isOkta" "Is this an Okta device" false -}}
+  {{- $isOkta = promptBoolOnce $snodots "isOkta" "Is this an Okta device" false -}}
 {{- end -}}
 
 {{- if $isMine -}}
   {{- $opVault = "Personal" -}}
   {{- $edKey = "al6g7er6txmaagdchdpcuuj3xa" -}}
+  {{- $githubId = "gvwbwyxftzqkvlwnvehf7jffvm" -}}
 {{- else -}}
   {{- $opVault = "Okta" -}}
   {{- $edKey = "3hnydtulzfhednjgbqhfxcfnlm" -}}
   {{- $rsaKey = "phb2bs6xs5znqugxr75fjrvke4" -}}
+  {{- $githubId = "w7r42b37tjderp76tvin5w2yoa" -}}
 {{- end -}}
 
 [data]
@@ -26,3 +29,4 @@
   snodots.onepassVault = {{ $opVault | quote }}
   snodots.edKeyId = {{ $edKey | quote }}
   snodots.rsaKeyId = {{ $rsaKey | quote }}
+  snodots.gitEmail = {{ onepasswordRead (printf "op://%s/%s/email" $opVault $githubId) | quote }}

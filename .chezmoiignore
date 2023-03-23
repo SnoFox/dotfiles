@@ -8,3 +8,8 @@ terminal_profiles
 # Add all macOS-only files here
 .snodots/02_brew_path_prefix
 {{ end }}
+
+{{ if not .snodots.isOkta }}
+# Add all Okta-only files here
+.ssh/overlays/okta_*
+{{ end }}

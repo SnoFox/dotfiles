@@ -1,0 +1,6 @@
+Host *.saasure.com *.internal
+  StrictHostKeyChecking no
+  User jjohnson
+  ForwardAgent yes
+  ServerAliveInterval 60
+  IdentityFile ~/.ssh/okta/%r
