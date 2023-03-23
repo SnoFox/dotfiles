@@ -2,6 +2,7 @@ README.md
 LICENSE
 .zsh/zcompdump-*
 .zsh/.history
+terminal_profiles
 
 {{ if ne .chezmoi.os "darwin" }}
 # Add all macOS-only files here
