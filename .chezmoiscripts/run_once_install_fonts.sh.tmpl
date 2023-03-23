@@ -12,7 +12,7 @@ for font in "${FONTS[@]}"; do
     echo "$font already installed, skipping..."
   else
     echo "Downloading $font..."
-    curl -o "${fontpath}" https://github.com/romkatv/powerlevel10k-media/raw/master/${font// /%20}
+    curl -sLo "${fontpath}" https://github.com/romkatv/powerlevel10k-media/raw/master/${font// /%20}
   fi
 done
 {{end}}
