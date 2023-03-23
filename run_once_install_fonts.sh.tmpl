@@ -1,0 +1,17 @@
+{{- if .snodots.isWorkstation -}}
+#!/usr/bin/env bash
+
+# Install Powerlevel10k fonts
+declare -a FONTS=("MesloLGS NF Regular.ttf" "MesloLGS NF Bold.ttf" "MesloLGS NF Italic.ttf" "MesloLGS NF Bold Italic.ttf")
+# TODO update this for WSL/Linux
+FONTDIR=${HOME}/Library/Fonts/
+
+for font in "${FONTS[@]}"; do
+  fontpath=$FONTDIR/$font
+  if [ -e "$fontpath" ]; then
+    echo "$font already installed, skipping..."
+  else
+    curl -o "${fontpath}" https://github.com/romkatv/powerlevel10k-media/raw/master/${font// /%20}
+  fi
+done
+{{end}}
