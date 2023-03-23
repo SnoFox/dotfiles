@@ -1,0 +1,5 @@
+{{- $snodots := get . "snodots" -}}
+{{- $isOkta := promptBoolOnce $snodots "isOkta" "Is this an Okta workstation?" false -}}
+
+[data]
+  snodots.isOkta = {{ $isOkta }}
