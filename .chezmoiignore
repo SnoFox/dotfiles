@@ -12,4 +12,5 @@ terminal_profiles
 {{ if not .snodots.isOkta }}
 # Add all Okta-only files here
 .ssh/overlays/okta_*
+.snodots/okta*
 {{ end }}

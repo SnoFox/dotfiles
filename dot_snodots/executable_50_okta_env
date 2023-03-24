@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# the sacred variables
+export OKTA_HOME=$HOME/okta
+export OKTA_USER=jjohnson
+export AWS_USER=${OKTA_USER}
+
+# my aliases
+alias nomy="okta-nomy-cli instances"
+alias aws-console="okta-aws-auth-console"
+
+# gcloud bin until I make a real setup for it
+export PATH=${PATH}:${HOME}/.local/bin/google-cloud-sdk/bin

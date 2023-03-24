@@ -47,3 +47,4 @@ esac
 
 alias ping='ping -c4'
 alias ping6='ping6 -c4'
+alias week="date '+%Y.%W'"
