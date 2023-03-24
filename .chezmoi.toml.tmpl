@@ -4,6 +4,7 @@
 {{- $edKey := "" -}}
 {{- $rsaKey := "" -}}
 {{- $githubId := "" -}}
+{{- $awsIds := list -}}
 
 {{- $isWorkstation := promptBoolOnce $snodots "isWorkstation" "Is this a workstation" true -}}
 {{- $isMine := promptBoolOnce $snodots "isPersonal" "Is this a personal device" true -}}
@@ -20,6 +21,7 @@
   {{- $edKey = "3hnydtulzfhednjgbqhfxcfnlm" -}}
   {{- $rsaKey = "phb2bs6xs5znqugxr75fjrvke4" -}}
   {{- $githubId = "w7r42b37tjderp76tvin5w2yoa" -}}
+  {{- $awsIds = list "epzgonln6mmqgkah22jei5t76m" "67jyugt77al3cejxfldytdn7r4" -}}
 {{- end -}}
 
 [data]
@@ -30,3 +32,4 @@
   snodots.edKeyId = {{ $edKey | quote }}
   snodots.rsaKeyId = {{ $rsaKey | quote }}
   snodots.gitEmail = {{ onepasswordRead (printf "op://%s/%s/email" $opVault $githubId) | quote }}
+  snodots.awsKeyIds = [{{ $awsIds | quoteList | join ", " }}]

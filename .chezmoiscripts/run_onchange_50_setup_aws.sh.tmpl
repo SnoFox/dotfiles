@@ -1,0 +1,26 @@
+{{- if .snodots.awsKeyIds -}}
+#!/usr/bin/env bash
+{{ $accessKeys := dict }}
+{{ range .snodots.awsKeyIds }}
+  {{- $rawKey := onepasswordDetailsFields . -}}
+  {{- $key := dict -}}
+  {{- $_ := set $key "id" $rawKey.username.value -}}
+  {{- $_ := set $key "secret" $rawKey.credential.value -}}
+  {{- $keyName := "" -}}
+  {{- range values $rawKey -}}
+    {{- if eq .label "name" -}}
+      {{- $keyName = .value }}
+      {{- break -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $keyName -}}
+    {{ fail "AWS key has no name; add a 'name' field" }}
+  {{- end -}}
+  {{- $_ := set $accessKeys $keyName $key -}}
+{{- end }}
+{{- /* TODO come back and sort this by name? */ -}}
+{{ range $i, $v := $accessKeys }}
+aws --profile {{ $i }} configure set aws_access_key_id {{ $v.id }}
+aws --profile {{ $i }} configure set aws_secret_access_key "{{ $v.secret }}"
+{{- end -}}
+{{ end }}
