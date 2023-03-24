@@ -33,5 +33,7 @@ curl -sL --output zellij.tar.gz https://github.com/zellij-org/zellij/releases/do
 curl -sL --output zellij.sha256 https://github.com/zellij-org/zellij/releases/download/v${ZELLIJ_VERSION}/zellij-${ARCH}-${KERNEL}.sha256sum
 tar -xf zellij.tar.gz
 echo "$(<zellij.sha256)" | sha256sum --check --status
+mkdir -p ${HOME}/.local/bin
 mv zellij ${HOME}/.local/bin
+chmod +x ${HOME}/.local/bin/zellij
 popd > /dev/null
