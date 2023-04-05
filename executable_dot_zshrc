@@ -3,9 +3,6 @@ for file in ${HOME}/.snodots/*(Nx-.:t); do
   . "${HOME}/.snodots/${file}"
 done
 
-# (Re)-launch Zellij
-ZELLIJ_AUTO_ATTACH=true ZELLIJ_AUTO_EXIT=true eval "$(zellij setup --generate-auto-start zsh)"
-
 # Init zsh
 #
 # p10k instant prompt needs to stay at the top
@@ -14,6 +11,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 source "${HOME}/.zsh/antigen/antigen.zsh"
+antigen use prezto
 antigen theme romkatv/powerlevel10k
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -26,11 +24,13 @@ autoload compinit; compinit -d "${HOME}/.zsh/.zcompdump-${HOST}"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# zsh syntax highlighting needs to be last ZLE widget
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+
+
 # zsh-specific overrides
 for file in ${HOME}/.zsh/snodots/*(N.x:t); do
   . "${HOME}/.zsh/snodots/${file}"
 done
 
-# zsh syntax highlighting needs to be last
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
