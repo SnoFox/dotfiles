@@ -1,0 +1,29 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+KUBECTL_VERSION=1.28
+
+sudo apt update
+sudo apt install --yes --no-install-recommends --no-install-suggests zsh
+
+if [ -z "$(which op)" ]; then
+  sudo -s \
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+  gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+  tee /etc/apt/sources.list.d/1password.list
+  mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+  curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+  tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+  mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+  gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+  apt update && apt install 1password-cli
+fi
+
+if [ -z "$(which kubectl)" ]; then
+  curl -fsSL https://pkgs.k8s.io/core:/stable:/v${KUBECTL_VERSION}/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v${KUBECTL_VERSION}/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  sudo apt update && sudo apt install -y kubectl
+fi
+
+{{end}}

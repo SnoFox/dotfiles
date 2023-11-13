@@ -1,0 +1,5 @@
+{{- if .snodots.isWsl -}}
+#!/usr/bin/env bash
+# ssh.service hash: {{ include "dot_config/systemd/user/ssh.service.tmpl" | sha256sum }} 
+systemctl --user daemon-reload
+{{- end -}}

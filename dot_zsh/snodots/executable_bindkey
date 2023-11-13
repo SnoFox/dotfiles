@@ -1,5 +1,12 @@
 bindkey -d
 bindkey -e
 bindkey ' ' magic-space
+
+# Windows Terminal
+bindkey '\eOH' beginning-of-line
+bindkey '\eOF' end-of-line
+bindkey '\e[3~' delete-char
+
+# iTerm2
 bindkey '\e[H' beginning-of-line
 bindkey '\e[F' end-of-line

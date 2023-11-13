@@ -1,0 +1,6 @@
+{{- if .snodots.isWsl -}}
+#!/usr/bin/env bash
+set -eu
+systemctl --user enable {{ .chezmoi.homeDir -}}/.config/systemd/user/ssh.service
+systemctl --user start ssh
+{{ end }}

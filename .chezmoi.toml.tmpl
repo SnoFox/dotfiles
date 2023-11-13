@@ -8,6 +8,7 @@
 
 {{- $isWorkstation := promptBoolOnce $snodots "isWorkstation" "Is this a workstation" true -}}
 {{- $isMine := promptBoolOnce $snodots "isPersonal" "Is this a personal device" true -}}
+{{- $isWsl := contains "WSL" .chezmoi.kernel.osrelease -}}
 {{- if not $isMine -}}
   {{- $isOkta = promptBoolOnce $snodots "isOkta" "Is this an Okta device" false -}}
 {{- end -}}
@@ -28,6 +29,7 @@
   snodots.isPersonal = {{ $isMine }}
   snodots.isOkta = {{ $isOkta }}
   snodots.isWorkstation = {{ $isWorkstation }}
+  snodots.isWsl = {{ $isWsl }}
   snodots.onepassVault = {{ $opVault | quote }}
   snodots.edKeyId = {{ $edKey | quote }}
   snodots.rsaKeyId = {{ $rsaKey | quote }}

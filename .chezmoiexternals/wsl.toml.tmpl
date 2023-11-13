@@ -1,0 +1,8 @@
+{{- if .snodots.isWsl -}}
+[".local/bin/npiperelay.exe"]
+  type				= "archive-file"
+  url				= "https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip"
+  checksum.sha512	= "f02d31273a770146ca5069f217efd3a8f7839686c2b16b5acc819601c3389a555e1e5c3480d061eafa3c1855845e398497e66509f16b1b8b58265426eea0cc69"
+  path				= "npiperelay.exe"
+  executable		= true
+{{- end -}}

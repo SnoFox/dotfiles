@@ -3,8 +3,13 @@
 
 # Install Powerlevel10k fonts
 declare -a FONTS=("MesloLGS NF Regular.ttf" "MesloLGS NF Bold.ttf" "MesloLGS NF Italic.ttf" "MesloLGS NF Bold Italic.ttf")
-# TODO update this for WSL/Linux
+# TODO update this for Linux
+{{- if .snodots.isWsl }}
+FONTDIR=/mnt/c/Temp
+  {{else}}
 FONTDIR=${HOME}/Library/Fonts/
+{{end}}
+mkdir -p ${FONTDIR}
 
 for font in "${FONTS[@]}"; do
   fontpath=$FONTDIR/$font
@@ -16,3 +21,6 @@ for font in "${FONTS[@]}"; do
   fi
 done
 {{end}}
+
+echo -n "Please install fonts from $FONTDIR and press enter to continue..."
+read
