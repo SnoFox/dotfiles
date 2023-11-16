@@ -17,7 +17,7 @@ HASH="%C(yellow)%h%Creset"
 RELATIVE_TIME="%Cgreen(%ar)%Creset"
 AUTHOR="%C(bold blue)<%an>%Creset"
 REFS="%C(red)%d%Creset"
-SUBJECT="%s"
+SUBJECT="%<(150,trunc)%s"
 
 FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
 

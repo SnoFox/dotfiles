@@ -1,3 +1,4 @@
+{{- if .snodots.isWsl -}}
 [Unit]
 Description=SSH Relay
 
@@ -7,3 +8,4 @@ ExecStart=/usr/bin/socat UNIX-LISTEN:{{- .chezmoi.homeDir -}}/.ssh/agent.sock,fo
 
 [Install]
 WantedBy=default.target
+{{- end -}}
