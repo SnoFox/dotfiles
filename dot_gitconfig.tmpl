@@ -51,3 +51,9 @@
 [core]
   fileMode = false
   autocrlf = input
+{{- if .snodots.isOkta }}
+  sshCommand = /Users/josh/.git-helpers/git-ssh-ca-aurm
+[credential]
+  helper = /opt/homebrew/opt/bash/bin/bash /Users/josh/.git-helpers/git-credential-okta-aurm --error --verbose -jq /opt/homebrew/bin/jq
+  useHttpPath = true
+{{ end }}
