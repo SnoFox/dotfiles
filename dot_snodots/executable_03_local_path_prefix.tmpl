@@ -5,8 +5,7 @@ export PATH=${HOME}/.local/bin:${PATH}
 {{ if .snodots.isOkta -}}
 # RVM
 source ${HOME}/.rvm/scripts/rvm
-# stupid fucking stupid fucking stupid macos
 # this will absolutely break when I upgrade ruby
-export GEM_PATH=${GEM_PATH}:${HOME}/.gem/ruby/2.7.0
-export PATH=${PATH}:${HOME}/.gem/ruby/2.7.0/bin
+export GEM_PATH=${GEM_PATH}:${HOME}/.gem/ruby/3.3.0
+export PATH=${PATH}:${HOME}/.gem/ruby/3.3.0/bin
 {{end}}
