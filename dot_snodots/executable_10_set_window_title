@@ -1,0 +1,4 @@
+#!/bin/sh
+function set_win_title(){
+    echo -ne "\033]0; ${PWD#$HOME/} - $USER@$HOST \007"
+}
