@@ -1,6 +1,11 @@
 [user]
   name = Josh Johnson
   email = {{ .snodots.gitEmail }}
+{{- if .snodots.isOkta }}
+  signingkey = B33FE234A83F673B
+[commit]
+  gpgsign = true
+{{ end }}
 [diff]
 [color]
   ui = auto
