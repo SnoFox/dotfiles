@@ -3,4 +3,3 @@ Host *.saasure.com *.internal
   User jjohnson
   ForwardAgent yes
   ServerAliveInterval 60
-  IdentityFile ~/.ssh/okta/%r

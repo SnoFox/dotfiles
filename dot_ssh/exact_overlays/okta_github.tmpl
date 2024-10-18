@@ -1,3 +1,8 @@
 Host github.com
   User {{ onepasswordRead "op://Okta/zhljdbrmr5hcgnxdfxdlzfcoca/notesPlain" }}
   IdentityFile {{ onepasswordRead "op://Okta/zhljdbrmr5hcgnxdfxdlzfcoca/identity file" }}
+Host github-personal
+  Hostname github.com
+  User git
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/josh_arctic.pub

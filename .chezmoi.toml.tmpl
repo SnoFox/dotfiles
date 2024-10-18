@@ -2,6 +2,7 @@
 {{- $isOkta := false -}}
 {{- $opVault := "" -}}
 {{- $edKey := "" -}}
+{{- $workEdKeyId := "" -}}
 {{- $rsaKey := "" -}}
 {{- $githubId := "" -}}
 {{- $awsIds := list -}}
@@ -15,16 +16,15 @@
 
 {{- if $isMine -}}
   {{- $opVault = "Personal" -}}
-  {{- $edKey = "al6g7er6txmaagdchdpcuuj3xa" -}}
   {{- $githubId = "gvwbwyxftzqkvlwnvehf7jffvm" -}}
 {{- else -}}
   {{- $opVault = "Okta" -}}
-  {{- $edKey = "3hnydtulzfhednjgbqhfxcfnlm" -}}
+  {{- $workEdKeyId = "3hnydtulzfhednjgbqhfxcfnlm" -}}
   {{- $rsaKey = "phb2bs6xs5znqugxr75fjrvke4" -}}
   {{- $githubId = "w7r42b37tjderp76tvin5w2yoa" -}}
-  {{- $awsIds = list "epzgonln6mmqgkah22jei5t76m" "67jyugt77al3cejxfldytdn7r4" -}}
 {{- end -}}
 
+{{- $edKey = "al6g7er6txmaagdchdpcuuj3xa" -}}
 [data]
   snodots.isPersonal = {{ $isMine }}
   snodots.isOkta = {{ $isOkta }}
@@ -32,6 +32,7 @@
   snodots.isWsl = {{ $isWsl }}
   snodots.onepassVault = {{ $opVault | quote }}
   snodots.edKeyId = {{ $edKey | quote }}
+  snodots.workEdKeyId = {{ $workEdKeyId | quote }}
   snodots.rsaKeyId = {{ $rsaKey | quote }}
   snodots.gitEmail = {{ onepasswordRead (printf "op://%s/%s/email" $opVault $githubId) | quote }}
   snodots.awsKeyIds = [{{ $awsIds | quoteList | join ", " }}]
