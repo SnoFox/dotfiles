@@ -1,8 +1,8 @@
 {{- if .snodots.isWorkstation -}}
 #!/usr/bin/env bash
 
-# Install Powerlevel10k fonts
-declare -a FONTS=("MesloLGS NF Regular.ttf" "MesloLGS NF Bold.ttf" "MesloLGS NF Italic.ttf" "MesloLGS NF Bold Italic.ttf")
+tempdir=
+
 # TODO update this for Linux
 {{- if .snodots.isWsl }}
 FONTDIR=/mnt/c/Temp
@@ -11,13 +11,31 @@ FONTDIR=${HOME}/Library/Fonts/
 {{end}}
 mkdir -p ${FONTDIR}
 
-for font in "${FONTS[@]}"; do
+trap cleanup EXIT
+function cleanup() {
+  if [ -d $tempdir ]; then
+    rm -rf $tempdir
+  fi
+}
+
+function get_fonts() {
+  if [ -x "$tempdir" ]; then
+    tempdir=$(mktemp -d)
+  fi
+  if [ ! -f "${tempdir}"/Meslo.zip ]; then
+    echo "Downloading fonts..."
+    curl -sLo "${tempdir}/Meslo.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip
+    unzip "${tempdir}/Meslo.zip" -d "${tempdir}"
+  fi
+}
+
+for font in MesloLGSNerdFont-{Regular,Bold,Italic,BoldItalic}.ttf; do
   fontpath=$FONTDIR/$font
   if [ -e "$fontpath" ]; then
     echo "$font already installed, skipping..."
   else
-    echo "Downloading $font..."
-    curl -sLo "${fontpath}" https://github.com/romkatv/powerlevel10k-media/raw/master/${font// /%20}
+    get_fonts
+    mv "${tempdir}/$font}" "$fontdir"
   fi
 done
 {{end}}
