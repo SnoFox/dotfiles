@@ -1,8 +1,8 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
 
-brew install wget coreutils jq watch gpg2 kubectl helm
-brew install --cask 1password-cli visual-studio-code spotify
+brew install wget coreutils jq watch gpg2 kubectl helm golang
+brew install --cask 1password-cli visual-studio-code 
 
 {{ if .snodots.isPersonal -}}
 brew install --cask discord tailscale

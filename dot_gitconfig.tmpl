@@ -2,13 +2,40 @@
   name = Josh Johnson
   email = {{ .snodots.gitEmail }}
 {{- if .snodots.isOkta }}
-  signingkey = B33FE234A83F673B
+  signingkey = 72E7DCCAE4B9D9D683080C3B9E69F388414414FC
 [commit]
   gpgsign = true
+  verbose = true
 {{ end }}
 [diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [color]
   ui = auto
+[column]
+  ui = auto
+[merge]
+  tool = vimdiff
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[column]
+  ui = auto
+[push]
+  default = current
+[fetch]
+  prune = true
+  pruneTags = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[core]
+  fileMode = false
+  autocrlf = input
+  excludesfile = ~/.gitignore
 [alias]
   st = status
   ci = commit
@@ -47,18 +74,9 @@
   ra = !git r --all
   l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all
-
-[merge]
-  tool = vimdiff
-
-[push]
-  default = current
-[core]
-  fileMode = false
-  autocrlf = input
 {{- if .snodots.isOkta }}
-  sshCommand = /Users/josh/.git-helpers/git-ssh-ca-aurm
-[credential]
-  helper = /opt/homebrew/opt/bash/bin/bash /Users/josh/.git-helpers/git-credential-okta-aurm --error --verbose -jq /opt/homebrew/bin/jq
+  sshCommand = /usr/local/bin/ocm handler ssh
   useHttpPath = true
+[credential]
+  helper = /usr/local/bin/ocm handler https
 {{ end }}
