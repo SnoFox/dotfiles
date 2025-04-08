@@ -1,0 +1,4 @@
+[default]
+region = us-west-2
+output = table
+credential_process = sh -c "op item get aitowsnb3iurz74eorn4pireiq --format json | jq '{\"Version\": 1, \"AccessKeyId\": (.fields[] | select(.label == \"access key id\") | .value), \"SecretAccessKey\": (.fields[] | select(.label == \"secret access key\") | .value)}'"
