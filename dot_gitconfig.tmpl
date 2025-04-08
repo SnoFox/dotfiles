@@ -3,10 +3,14 @@
   email = {{ .snodots.gitEmail }}
 {{- if .snodots.isOkta }}
   signingkey = 72E7DCCAE4B9D9D683080C3B9E69F388414414FC
+{{ else }}
+  signingkey = ~/.ssh/josh_arctic.pub
+[gpg]
+  format = ssh
+{{ end }}
 [commit]
   gpgsign = true
   verbose = true
-{{ end }}
 [diff]
   algorithm = histogram
   colorMoved = plain
