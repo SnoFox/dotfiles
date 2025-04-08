@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+{{end}}
