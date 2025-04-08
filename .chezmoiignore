@@ -1,5 +1,6 @@
 README.md
 LICENSE
+.DS_Store
 .zsh/zcompdump-*
 .zsh/.history
 terminal_profiles
@@ -12,5 +13,8 @@ terminal_profiles
 {{ if not .snodots.isOkta }}
 # Add all Okta-only files here
 .ssh/overlays/okta_*
-.snodots/okta*
+.snodots/50_okta_*
+{{ else }}
+# Add all files here that would break a work setup
+.aws/*
 {{ end }}
