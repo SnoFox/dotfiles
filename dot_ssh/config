@@ -8,3 +8,8 @@ Include overlays/*
 Host *.snofox.net *.fox.ninja *.t.sans.zone
     ForwardAgent yes
     User josh
+
+Host gitlab.com
+  User git
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/josh_arctic.pub
