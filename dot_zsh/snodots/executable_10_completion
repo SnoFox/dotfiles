@@ -94,7 +94,8 @@ zstyle ':completion:*:diff:*' ignore-line yes
 zstyle ':completion:*:kill:*' ignore-line yes
 
 # Kubernetes auto-completion
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+source <(kubectl completion zsh)
+source <(helm completion zsh)
 # utility.sh
 # Miscellaneous Utility Functions
 
