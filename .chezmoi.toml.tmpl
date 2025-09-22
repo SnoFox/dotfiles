@@ -1,5 +1,5 @@
 {{- $snodots := ternary (get . "snodots") dict (hasKey . "snodots" ) -}}
-{{- $isOkta := false -}}
+{{- $isNexthink := false -}}
 {{- $opVault := "" -}}
 {{- $edKey := "" -}}
 {{- $workEdKeyId := "" -}}
@@ -11,23 +11,23 @@
 {{- $isMine := promptBoolOnce $snodots "isPersonal" "Is this a personal device" true -}}
 {{- $isWsl := and (eq .chezmoi.os "linux") (contains "WSL" .chezmoi.kernel.osrelease) -}}
 {{- if not $isMine -}}
-  {{- $isOkta = promptBoolOnce $snodots "isOkta" "Is this an Okta device" false -}}
+  {{- $isNexthink = promptBoolOnce $snodots "isNexthink" "Is this an Nexthink device" false -}}
 {{- end -}}
 
 {{- if $isMine -}}
   {{- $opVault = "Personal" -}}
   {{- $githubId = "gvwbwyxftzqkvlwnvehf7jffvm" -}}
 {{- else -}}
-  {{- $opVault = "Okta" -}}
-  {{- $workEdKeyId = "3hnydtulzfhednjgbqhfxcfnlm" -}}
-  {{- $rsaKey = "phb2bs6xs5znqugxr75fjrvke4" -}}
-  {{- $githubId = "w7r42b37tjderp76tvin5w2yoa" -}}
+  {{- $opVault = "Nexthink" -}}
+  {{- $workEdKeyId = "ndkok3pv46h4bsc6ojo7j7hpcq" -}}
+  {{- $rsaKey = "nkl5wcg4ikd2jsbqou2rx5qvnm" -}}
+  {{- $githubId = "ndkok3pv46h4bsc6ojo7j7hpcq" -}}
 {{- end -}}
 
 {{- $edKey = "al6g7er6txmaagdchdpcuuj3xa" -}}
 [data]
   snodots.isPersonal = {{ $isMine }}
-  snodots.isOkta = {{ $isOkta }}
+  snodots.isNexthink = {{ $isNexthink }}
   snodots.isWorkstation = {{ $isWorkstation }}
   snodots.isWsl = {{ $isWsl }}
   snodots.onepassVault = {{ $opVault | quote }}

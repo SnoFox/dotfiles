@@ -1,12 +1,9 @@
 [user]
   name = Josh Johnson
   email = {{ .snodots.gitEmail }}
-{{- if .snodots.isOkta }}
-  signingkey = 72E7DCCAE4B9D9D683080C3B9E69F388414414FC
 [commit]
   gpgsign = true
   verbose = true
-{{ end }}
 [diff]
   algorithm = histogram
   colorMoved = plain
@@ -74,9 +71,3 @@
   ra = !git r --all
   l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all
-{{- if .snodots.isOkta }}
-  sshCommand = /usr/local/bin/ocm handler ssh
-  useHttpPath = true
-[credential]
-  helper = /usr/local/bin/ocm handler https
-{{ end }}
