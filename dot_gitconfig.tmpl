@@ -1,9 +1,6 @@
 [user]
   name = Josh Johnson
   email = {{ .snodots.gitEmail }}
-[commit]
-  gpgsign = true
-  verbose = true
 [diff]
   algorithm = histogram
   colorMoved = plain
@@ -71,3 +68,7 @@
   ra = !git r --all
   l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all
+{{ if .snodots.isWork }}
+[include]
+  path = ~/.workfiles/git/config
+{{ end -}}

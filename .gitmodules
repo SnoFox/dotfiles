@@ -1,0 +1,3 @@
+[submodule "dot_workfiles"]
+	path = dot_workfiles
+	url = git@gitlab.com:SnoFox/dot_nxtfiles.git

@@ -1,0 +1,25 @@
+packages:
+  base:
+    darwin:
+      brews:
+        - wget
+        - coreutils
+        - jq
+        - watch
+        - gpg2
+        - kubectl
+        - krew
+        - helm
+        - helmfile
+        - golang
+      casks:
+        - 1password-cli
+        - visual-studio-code
+        - obsidian
+        - ghostty
+  personal:
+    darwin:
+      brews: []
+      casks:
+        - discord
+        - tailscale

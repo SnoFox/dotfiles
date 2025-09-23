@@ -1,11 +1,24 @@
-{{- if eq .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
+{{ $brews := .packages.base.darwin.brews -}}
+{{- $casks := .packages.base.darwin.casks -}}
+{{- if .snodots.isPersonal -}}
+{{- $brews = concat $brews .packages.personal.darwin.brews -}}
+{{- $casks = concat $casks .packages.personal.darwin.casks -}}
+{{- else if .snodots.isWork -}}
+{{- $brews = concat $brews .packages.work.darwin.brews -}}
+{{- $casks = concat $casks .packages.work.darwin.casks -}}
+{{- end -}}
 
-brew install wget coreutils jq watch gpg2 kubectl krew helm helmfile golang
-brew install --cask 1password-cli visual-studio-code obsidian ghostty
+brew bundle --file=/dev/stdin <<EOF
+{{ range $brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range $casks -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF
+
 kubectl krew install ctx ns
+{{ end -}}
 
-{{ if .snodots.isPersonal -}}
-brew install --cask discord tailscale
-{{end}}
-{{end}}

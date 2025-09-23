@@ -1,5 +1,5 @@
 {{- $snodots := ternary (get . "snodots") dict (hasKey . "snodots" ) -}}
-{{- $isNexthink := false -}}
+{{- $isWork := false -}}
 {{- $opVault := "" -}}
 {{- $edKey := "" -}}
 {{- $workEdKeyId := "" -}}
@@ -11,7 +11,7 @@
 {{- $isMine := promptBoolOnce $snodots "isPersonal" "Is this a personal device" true -}}
 {{- $isWsl := and (eq .chezmoi.os "linux") (contains "WSL" .chezmoi.kernel.osrelease) -}}
 {{- if not $isMine -}}
-  {{- $isNexthink = promptBoolOnce $snodots "isNexthink" "Is this an Nexthink device" false -}}
+  {{- $isWork = promptBoolOnce $snodots "isWork" "Is this a work device" false -}}
 {{- end -}}
 
 {{- if $isMine -}}
@@ -27,7 +27,7 @@
 {{- $edKey = "al6g7er6txmaagdchdpcuuj3xa" -}}
 [data]
   snodots.isPersonal = {{ $isMine }}
-  snodots.isNexthink = {{ $isNexthink }}
+  snodots.isWork = {{ $isWork }}
   snodots.isWorkstation = {{ $isWorkstation }}
   snodots.isWsl = {{ $isWsl }}
   snodots.onepassVault = {{ $opVault | quote }}
