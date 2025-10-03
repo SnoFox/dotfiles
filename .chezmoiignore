@@ -8,3 +8,7 @@ terminal_profiles
 # Add all macOS-only files here
 .snodots/02_brew_path_prefix
 {{ end }}
+
+{{ if .snodots.isWork }}
+.aws
+{{ end }}
