@@ -17,6 +17,7 @@ packages:
         - visual-studio-code
         - obsidian
         - ghostty
+        - firefox
   personal:
     darwin:
       brews: []
