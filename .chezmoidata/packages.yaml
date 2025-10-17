@@ -18,6 +18,8 @@ packages:
         - obsidian
         - ghostty
         - firefox
+        - rectangle-pro
+        - jordanbaird-ice
   personal:
     darwin:
       brews: []
