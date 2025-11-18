@@ -23,6 +23,7 @@ antigen use prezto
 antigen theme romkatv/powerlevel10k
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
+antigen bundle atuinsh/atuin@main
 
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -39,3 +40,4 @@ for file in ${HOME}/.zsh/snodots/*(N.x:t); do
   . "${HOME}/.zsh/snodots/${file}"
 done
 
+eval "$(atuin init zsh)"

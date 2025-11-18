@@ -12,6 +12,7 @@ packages:
         - helm
         - helmfile
         - golang
+        - atuin
       casks:
         - 1password-cli
         - visual-studio-code
