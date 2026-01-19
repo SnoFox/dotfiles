@@ -40,4 +40,4 @@ for file in ${HOME}/.zsh/snodots/*(N.x:t); do
   . "${HOME}/.zsh/snodots/${file}"
 done
 
-eval "$(atuin init zsh)"
+eval "$(atuin init --disable-up-arrow zsh)"
