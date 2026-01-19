@@ -27,4 +27,4 @@ packages:
       brews: []
       casks:
         - discord
-        - tailscale
+        - tailscale-app
