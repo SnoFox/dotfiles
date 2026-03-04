@@ -22,6 +22,7 @@ packages:
         - firefox
         - rectangle-pro
         - jordanbaird-ice
+        - dot
   personal:
     darwin:
       brews: []
