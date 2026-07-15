@@ -23,6 +23,7 @@ packages:
         - rectangle-pro
         - jordanbaird-ice
         - dot
+        - spotify
   personal:
     darwin:
       brews: []
