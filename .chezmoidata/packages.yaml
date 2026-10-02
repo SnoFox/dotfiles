@@ -21,12 +21,21 @@ packages:
         - ghostty
         - firefox
         - rectangle-pro
-        - jordanbaird-ice
+        - thaw
         - dot
         - spotify
+        - vorssaint
   personal:
     darwin:
       brews: []
       casks:
         - discord
         - tailscale-app
+        - bazecor
+        - fastmail
+        - prusaslicer
+        - aldente
+        - whatcable
+        - macusb
+        - raspberry-pi-imager
+        - prusaslicer

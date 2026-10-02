@@ -10,6 +10,7 @@
 {{- $casks = concat $casks .packages.work.darwin.casks -}}
 {{- end -}}
 
+brew update
 brew bundle --file=/dev/stdin <<EOF
 {{ range $brews -}}
 brew {{ . | quote }}
